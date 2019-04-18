@@ -5,6 +5,12 @@
   </h1>
 </div>
 
-<ckeditor [editor]="Editor" data="<p>Hello, world!</p>"></ckeditor>
-
 <router-outlet></router-outlet>
+
+<ckeditor
+[(ngModel)]="model.editorData"
+[editor]="Editor"
+[config]="config"
+(change)="onChange($event)" 
+></ckeditor>
+
