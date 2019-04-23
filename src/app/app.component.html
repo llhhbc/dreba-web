@@ -7,10 +7,22 @@
 
 <router-outlet></router-outlet>
 
-<ckeditor
-[(ngModel)]="model.editorData"
-[editor]="Editor"
-[config]="config"
-(change)="onChange($event)" 
-></ckeditor>
 
+<form (ngSubmit)="onSubmit()" #demoForm="ngForm">
+
+  <div>
+    <label for="title">title</label>
+    <input [(ngModel)]="model.title" type="text" name="title" id="title">
+  </div>
+
+  <div>
+    <label for="tags">tags</label>
+    <input [(ngModel)]="model.tags" type="text" name="tags" id="tags">
+  </div>
+
+  <label for="context">context</label>
+  <ckeditor [(ngModel)]="model.context" name="context" [editor]="Editor" [config]="config" (change)="onChange($event)"></ckeditor>
+
+  <p><button type="reset" (click)="reset()">Reset form</button></p>
+  <p><button type="submit">Submit this form</button> <em>(Open the console first)</em></p>
+</form>
