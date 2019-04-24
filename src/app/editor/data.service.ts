@@ -15,7 +15,7 @@ export class DataService {
     this.messageSource.next(message)
   }
 
-  GetMessage(){
-  	return this.messageSource.getValue();
+  GetMessage() {
+    return this.messageSource.getValue();
   }
 }

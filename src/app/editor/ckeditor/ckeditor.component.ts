@@ -5,19 +5,19 @@ import { DataService } from "../data.service";
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
-  selector: 'app-ckeditor',
-  templateUrl: './ckeditor.component.html',
-  styleUrls: ['./ckeditor.component.sass']
+	selector: 'app-ckeditor',
+	templateUrl: './ckeditor.component.html',
+	styleUrls: ['./ckeditor.component.sass']
 })
 export class CkeditorComponent implements OnInit {
 
-  message:string;
+	message: string;
 
-  constructor(private data: DataService) { }
+	constructor(private data: DataService) { }
 
-  public Editor = ClassicEditor;
+	public Editor = ClassicEditor;
 
-  public config = {
+	public config = {
 		ckfinder: {
 			options: {
 				resourceType: 'Images'
@@ -28,9 +28,9 @@ export class CkeditorComponent implements OnInit {
 	};
 	// {"fileName":"file name","uploaded":1,"error":{"number":201,"message":""},"url":"image url"}
 
-  ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.message = message)
-  }
+	ngOnInit() {
+		this.data.currentMessage.subscribe(message => this.message = message)
+	}
 
 
 	public onChange({ editor }) {

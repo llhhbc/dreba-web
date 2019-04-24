@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {EditorConfig} from './edit-config';
+import { EditorConfig } from './edit-config';
 
 import { DataService } from "../data.service";
 
