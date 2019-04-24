@@ -35,7 +35,7 @@ export class CkeditorComponent implements OnInit {
 
 	public onChange({ editor }) {
 		const data = editor.getData();
-		this.data.changeMessage( data);
+		this.data.changeMessage(data);
 		console.log(data);
 	}
 
