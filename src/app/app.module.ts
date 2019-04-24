@@ -7,11 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { MarkdownComponent } from './editor/markdown/markdown.component';
+import { CkeditorComponent } from './editor/ckeditor/ckeditor.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MarkdownComponent,
+    CkeditorComponent
   ],
   imports: [
     BrowserModule,

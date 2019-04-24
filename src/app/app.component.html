@@ -5,6 +5,7 @@
   </h1>
 </div>
 
+
 <router-outlet></router-outlet>
 
 
@@ -21,7 +22,8 @@
   </div>
 
   <label for="context">context</label>
-  <ckeditor [(ngModel)]="model.context" name="context" [editor]="Editor" [config]="config" (change)="onChange($event)"></ckeditor>
+  <!-- <ckeditor [(ngModel)]="model.context" name="context"></ckeditor> -->
+  <app-ckeditor name="context"></app-ckeditor>
 
   <p><button type="reset" (click)="reset()">Reset form</button></p>
   <p><button type="submit">Submit this form</button> <em>(Open the console first)</em></p>

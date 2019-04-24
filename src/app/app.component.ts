@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { DataService } from "./editor/data.service";
 
 @Component({
 	selector: 'app-root',
@@ -11,36 +11,28 @@ import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 export class AppComponent {
 	title = 'dreba';
 
-	constructor(private http: HttpClient){
+	message:string;
+
+	constructor(private http: HttpClient, private data: DataService){
     }
 
-	public Editor = ClassicEditor;
+    ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.message = message)
+  }
 
 	public model = {
 		title: '',
 		tags: '',
 		context_type: 'ckeditor',
-		context: ''
+		context: '',
 	};
 
-	public config = {
-		ckfinder: {
-			options: {
-				resourceType: 'Images'
-			},
-			uploadUrl: '/drebago/v1/images'
-		},
-		extraPlugins : ['FooPlugin', 'BarPlugin', 'markdown']
-	};
-	// {"fileName":"file name","uploaded":1,"error":{"number":201,"message":""},"url":"image url"}
-
-	public onChange({ editor }) {
-		const data = editor.getData();
-		console.log(data);
-	}
+	newMessage() {
+    this.data.changeMessage("Hello from Sibling")
+  }
 
 	onSubmit() {
-		console.log('Form submit, model', this.model);
+		console.log('Form submit, model', this.model, this.data.GetMessage());
 		this.http.post('/drebago/v1/blog/',this.model).subscribe(
         res => {
           console.log(res);
