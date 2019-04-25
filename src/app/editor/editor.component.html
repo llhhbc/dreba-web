@@ -1,0 +1,26 @@
+<form (ngSubmit)="onSubmit()" #demoForm="ngForm">
+
+  <div>
+    <label for="title">title</label>
+    <input [(ngModel)]="model.title" type="text" name="title" id="title">
+  </div>
+
+  <div>
+    <label for="tags">tags</label>
+    <input [(ngModel)]="model.tags" type="text" name="tags" id="tags">
+  </div>
+
+  <button type="button" (click)="changeEditor('Ckeditor')">CkEditor</button>
+  <button type="button" (click)="changeEditor('MarkDown')">MarkDown</button>
+
+  <label for="context">context</label>
+  <div *ngIf="model.context_type=='Ckeditor'">
+    <app-ckeditor name="context"></app-ckeditor>
+  </div>
+  <div *ngIf="model.context_type=='MarkDown'">
+    <app-markdown name="context"></app-markdown>
+  </div>
+
+  <p><button type="reset" (click)="reset()">Reset form</button></p>
+  <p><button type="submit">Submit this form</button> <em>(Open the console first)</em></p>
+</form>

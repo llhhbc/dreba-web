@@ -10,6 +10,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MarkdownComponent } from './editor/markdown/markdown.component';
 import { CkeditorComponent } from './editor/ckeditor/ckeditor.component';
 import { EditorDirective } from './editor/markdown/editor.directive';
+import { EditorComponent } from './editor/editor.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { EditorDirective } from './editor/markdown/editor.directive';
     AppComponent,
     MarkdownComponent,
     CkeditorComponent,
-    EditorDirective
+    EditorDirective,
+    EditorComponent
   ],
   imports: [
     BrowserModule,

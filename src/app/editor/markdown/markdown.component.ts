@@ -16,9 +16,10 @@ export class MarkdownComponent implements OnInit {
   markdown = '';
 
   ngOnInit() {
+    this.data.currentMessage.subscribe(message => this.markdown = message)
   }
 
-  syncModel(str): void {
+  syncModel(str: string): void {
     this.markdown = str;
     this.data.changeMessage(str);
   }
