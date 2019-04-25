@@ -20,7 +20,7 @@ export class EditorComponent implements OnInit {
   public model = {
     title: '',
     tags: '',
-    context_type: 'Ckeditor',
+    contextType: 'Ckeditor',
     context: '',
   };
 
@@ -29,7 +29,7 @@ export class EditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Form submit, model', this.model, this.data.GetMessage());
+    console.log('Form submit, model', this.model);
     this.http.post('/drebago/v1/blog/', this.model).subscribe(
       res => {
         console.log(res);
@@ -41,7 +41,7 @@ export class EditorComponent implements OnInit {
   }
 
   changeEditor(editor: string) {
-    this.model.context_type = editor;
+    this.model.contextType = editor;
   }
 
   reset() {

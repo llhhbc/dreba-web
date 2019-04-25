@@ -14,10 +14,10 @@
   <button type="button" (click)="changeEditor('MarkDown')">MarkDown</button>
 
   <label for="context">context</label>
-  <div *ngIf="model.context_type=='Ckeditor'">
+  <div *ngIf="model.contextType=='Ckeditor'">
     <app-ckeditor name="context"></app-ckeditor>
   </div>
-  <div *ngIf="model.context_type=='MarkDown'">
+  <div *ngIf="model.contextType=='MarkDown'">
     <app-markdown name="context"></app-markdown>
   </div>
 

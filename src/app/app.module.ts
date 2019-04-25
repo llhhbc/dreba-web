@@ -11,6 +11,7 @@ import { MarkdownComponent } from './blog/editor/markdown/markdown.component';
 import { CkeditorComponent } from './blog/editor/ckeditor/ckeditor.component';
 import { EditorDirective } from './blog/editor/markdown/editor.directive';
 import { EditorComponent } from './blog/editor/editor.component';
+import { BlogComponent } from './blog/blog.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { EditorComponent } from './blog/editor/editor.component';
     MarkdownComponent,
     CkeditorComponent,
     EditorDirective,
-    EditorComponent
+    EditorComponent,
+    BlogComponent
   ],
   imports: [
     BrowserModule,

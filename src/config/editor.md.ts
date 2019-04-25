@@ -1,3 +1,7 @@
+
+import { GlobalConfig } from './config';
+
+
 export class EditorConfig {
     public width = '100%';
     public height = '400';
@@ -19,7 +23,7 @@ export class EditorConfig {
     public sequenceDiagram = true;
     public imageUpload = true;
     public imageFormats = ['jpg', 'jpeg', 'gif', 'png', 'bmp', 'webp'];
-    public imageUploadURL = '/drebago/images';
+    public imageUploadURL = GlobalConfig.imageUploadUrl;
 
     constructor() {
     }

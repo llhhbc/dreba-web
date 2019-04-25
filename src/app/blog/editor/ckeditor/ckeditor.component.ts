@@ -4,6 +4,8 @@ import { DataService } from "../data.service";
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
+import { CkeditorConfig } from '../../../../config/ckeditor';
+
 @Component({
 	selector: 'app-ckeditor',
 	templateUrl: './ckeditor.component.html',
@@ -17,16 +19,7 @@ export class CkeditorComponent implements OnInit {
 
 	public Editor = ClassicEditor;
 
-	public config = {
-		ckfinder: {
-			options: {
-				resourceType: 'Images'
-			},
-			uploadUrl: '/drebago/v1/images'
-		},
-		// extraPlugins : ['FooPlugin', 'BarPlugin']
-	};
-	// {"fileName":"file name","uploaded":1,"error":{"number":201,"message":""},"url":"image url"}
+	public config = CkeditorConfig;
 
 	ngOnInit() {
 		this.data.currentMessage.subscribe(message => this.message = message)
