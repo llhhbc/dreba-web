@@ -1,5 +1,5 @@
 import { AfterViewInit, Attribute, Directive, EventEmitter, Input, Output } from '@angular/core';
-import { EditorConfig } from '../../../../config/editor.md';
+import { EditorConfig } from '../../../config/editor.md';
 
 declare var editormd: any;
 declare var $: any;

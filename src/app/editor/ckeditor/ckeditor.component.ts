@@ -4,7 +4,7 @@ import { DataService } from "../data.service";
 
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
-import { CkeditorConfig } from '../../../../config/ckeditor';
+import { CkeditorConfig } from '../../../config/ckeditor';
 
 @Component({
 	selector: 'app-ckeditor',

@@ -7,10 +7,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
-import { MarkdownComponent } from './blog/editor/markdown/markdown.component';
-import { CkeditorComponent } from './blog/editor/ckeditor/ckeditor.component';
-import { EditorDirective } from './blog/editor/markdown/editor.directive';
-import { EditorComponent } from './blog/editor/editor.component';
+import { MarkdownComponent } from './editor/markdown/markdown.component';
+import { CkeditorComponent } from './editor/ckeditor/ckeditor.component';
+import { EditorDirective } from './editor/markdown/editor.directive';
+import { EditorComponent } from './editor/editor.component';
 import { BlogComponent } from './blog/blog.component';
 
 
