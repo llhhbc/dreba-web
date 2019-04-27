@@ -24,12 +24,15 @@ export class BlogComponent implements OnInit {
   @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
 
   onSort({ column, direction }: SortEvent) {
-    console.log("here sort");
+    console.log("here sort", column, direction);
     this.headers.forEach(header => {
-      if (header.sortable !== column) {
+      if (header.appSortable !== column) {
         header.direction = '';
       }
-    })
+    });
+
+    this.service.sortColumn = column;
+    this.service.sortDirection = direction;
   }
 
   ngOnInit() {

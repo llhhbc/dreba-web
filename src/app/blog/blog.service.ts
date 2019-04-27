@@ -102,9 +102,10 @@ export class BlogService {
   private _doSearch(blogs: Blog[]): Blog[] {
     const { sortColumn, sortDirection, pageSize, page, searchTerm } = this._state;
 
-    console.log("get here blog: ", blogs);
+    console.log("get here blog: ", blogs, this._state);
     // 1. sort
     blogs = sort(blogs, sortColumn, sortDirection);
+    console.log("after sort:", blogs);
 
     // 2. filter
     blogs = blogs.filter(blog => matches(blog, searchTerm));

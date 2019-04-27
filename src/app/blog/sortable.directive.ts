@@ -18,7 +18,7 @@ export interface SortEvent {
 })
 export class SortableDirective {
 
-  @Input() sortable: string;
+  @Input() appSortable: string;
   @Input() direction: SortDirection = '';
   @Output() sort = new EventEmitter<SortEvent>();
 
@@ -26,7 +26,7 @@ export class SortableDirective {
 
   rotate() {
     this.direction = rotate[this.direction];
-    this.sort.emit({ column: this.sortable, direction: this.direction });
+    this.sort.emit({ column: this.appSortable, direction: this.direction });
   }
 
 }
