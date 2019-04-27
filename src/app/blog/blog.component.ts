@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Blog } from './blog';
-import { BlogService } from './blog.service';
+import { BlogService, SearchResult } from './blog.service';
+import { SortableDirective, SortEvent } from './sortable.directive';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-blog',
@@ -9,15 +12,31 @@ import { BlogService } from './blog.service';
 })
 export class BlogComponent implements OnInit {
 
-  constructor(private data: BlogService) { }
+  blogs: Observable<Blog[]>;
+  total: Observable<number>;
 
-  blogs: Blog[];
+  constructor(private service: BlogService) {
+    this.blogs = service.blogs$;
+    this.total = service.total$;
+  }
+
+
+  @ViewChildren(SortableDirective) headers: QueryList<SortableDirective>;
+
+  onSort({ column, direction }: SortEvent) {
+    console.log("here sort");
+    this.headers.forEach(header => {
+      if (header.sortable !== column) {
+        header.direction = '';
+      }
+    })
+  }
 
   ngOnInit() {
-    this.data.GetBlogs().subscribe((res: Blog[]) => {
-      console.log(res);
-      this.blogs = res;
-    });
+    // this.data.GetBlogs().subscribe((res: SearchResult) => {
+    //   console.log(res);
+    //   this.blogs = res.blogs;
+    // });
   }
 
 }

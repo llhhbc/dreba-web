@@ -6,12 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { MarkdownComponent } from './editor/markdown/markdown.component';
 import { CkeditorComponent } from './editor/ckeditor/ckeditor.component';
 import { EditorDirective } from './editor/markdown/editor.directive';
 import { EditorComponent } from './editor/editor.component';
 import { BlogComponent } from './blog/blog.component';
+import { SortableDirective } from './blog/sortable.directive';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { BlogComponent } from './blog/blog.component';
     CkeditorComponent,
     EditorDirective,
     EditorComponent,
-    BlogComponent
+    BlogComponent,
+    SortableDirective
   ],
   imports: [
     BrowserModule,
@@ -29,6 +32,7 @@ import { BlogComponent } from './blog/blog.component';
     FormsModule,
     HttpClientModule,
     CKEditorModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
