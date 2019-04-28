@@ -16,14 +16,14 @@ current blogs:
   <table class="table table-striped">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <!-- <th scope="col">#</th> -->
         <th scope="col" appSortable="title" (sort)="onSort($event)">Title</th>
         <th scope="col" appSortable="tags" (sort)="onSort($event)">Tags</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let blog of blogs | async">
-        <th scope="row">{{ blog.uuid }}</th>
+      <tr *ngFor="let blog of blogs | async" routerLink="/blogs/{{blog.uuid}}">
+        <!-- <th scope="row">{{ blog.uuid }}</th> -->
         <td>
           <ngb-highlight [result]="blog.title" [term]="service.searchTerm"></ngb-highlight>
         </td>

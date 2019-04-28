@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 import { DataService } from "./data.service";
+import { BlogService, SearchResult } from '../blog/blog.service';
+import { Blog } from '../blog/blog';
 
 @Component({
   selector: 'app-editor',
@@ -10,14 +13,25 @@ import { DataService } from "./data.service";
 })
 export class EditorComponent implements OnInit {
 
-  constructor(private http: HttpClient, private data: DataService) {
+  constructor(
+    private http: HttpClient,
+    private data: DataService,
+    private route: ActivatedRoute,
+    private blogSvr: BlogService) {
   }
 
   ngOnInit() {
-    this.data.currentMessage.subscribe(message => this.model.context = message)
+
+    const uuid = this.route.snapshot.paramMap.get('uuid');
+    this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
+      this.data.currentMessage.subscribe(message => this.blog.context = message)
+      this.blog = res.blogs.pop();
+      console.log("get pop blog: ", this.blog);
+      this.data.changeMessage(this.blog.context);
+    })
   }
 
-  public model = {
+  public blog: Blog = {
     title: '',
     tags: '',
     contextType: 'Ckeditor',
@@ -29,8 +43,8 @@ export class EditorComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('Form submit, model', this.model);
-    this.http.post('/drebago/v1/blog/', this.model).subscribe(
+    console.log('Form submit, model', this.blog);
+    this.http.post('/drebago/v1/blog/', this.blog).subscribe(
       res => {
         console.log(res);
       },
@@ -41,7 +55,7 @@ export class EditorComponent implements OnInit {
   }
 
   changeEditor(editor: string) {
-    this.model.contextType = editor;
+    this.blog.contextType = editor;
   }
 
   reset() {

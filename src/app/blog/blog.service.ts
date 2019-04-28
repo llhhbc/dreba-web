@@ -64,7 +64,7 @@ export class BlogService {
     this._search$.pipe(
       tap(() => this._loading$.next(true)),
       debounceTime(200),
-      switchMap(() => this.GetBlogs()),
+      switchMap(() => this.GetBlogs('')),
       delay(200),
       tap(() => this._loading$.next(false))
     ).subscribe(result => {
@@ -94,9 +94,9 @@ export class BlogService {
     this._search$.next();
   }
 
-  public GetBlogs(): Observable<SearchResult> {
+  public GetBlogs(uuid: string): Observable<SearchResult> {
     console.log("run here for get blogs");
-    return this.http.get<SearchResult>(GlobalConfig.getBlogUrl);
+    return this.http.get<SearchResult>(GlobalConfig.getBlogUrl + "/" + uuid);
   }
 
   private _doSearch(blogs: Blog[]): Blog[] {
