@@ -23,18 +23,19 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {
 
+    this.blog = { title: '', context: '', contextType: 'Ckeditor', tags: '' };
+    this.data.currentMessage.subscribe(message => this.blog.context = message)
+    this.data.changeMessage('');
+
     const uuid = this.route.snapshot.paramMap.get('uuid');
     console.log("get uuid", uuid, uuid == 'null', uuid != null);
     if (uuid != null) {
       this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
         this.blog = res.blogs.pop();
-        this.data.currentMessage.subscribe(message => this.blog.context = message)
+        // this.data.currentMessage.subscribe(message => this.blog.context = message);
         console.log("get pop blog: ", this.blog);
         this.data.changeMessage(this.blog.context);
       })
-    } else {
-      this.blog = { title: '', context: '', contextType: 'Ckeditor', tags: '' };
-      this.data.currentMessage.subscribe(message => this.blog.context = message)
     }
   }
 
