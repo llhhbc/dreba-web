@@ -4,9 +4,10 @@ import { BlogComponent } from './blog/blog.component';
 import { EditorComponent } from './editor/editor.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' }, //default route
-  { path: 'dashboard', component: BlogComponent },
+  // { path: '', redirectTo: '/', pathMatch: 'full' }, //default route
+  { path: '', component: BlogComponent },
   { path: 'blogs/:uuid', component: EditorComponent },
+  { path: 'blogs', component: EditorComponent },
 ];
 
 @NgModule({

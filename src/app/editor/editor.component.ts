@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from "./data.service";
 import { BlogService, SearchResult } from '../blog/blog.service';
 import { Blog } from '../blog/blog';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-editor',
@@ -23,20 +24,21 @@ export class EditorComponent implements OnInit {
   ngOnInit() {
 
     const uuid = this.route.snapshot.paramMap.get('uuid');
-    this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
+    console.log("get uuid", uuid, uuid == 'null', uuid != null);
+    if (uuid != null) {
+      this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
+        this.data.currentMessage.subscribe(message => this.blog.context = message)
+        this.blog = res.blogs.pop();
+        console.log("get pop blog: ", this.blog);
+        this.data.changeMessage(this.blog.context);
+      })
+    } else {
+      this.blog = { title: '', context: '', contextType: 'Ckeditor', tags: '' };
       this.data.currentMessage.subscribe(message => this.blog.context = message)
-      this.blog = res.blogs.pop();
-      console.log("get pop blog: ", this.blog);
-      this.data.changeMessage(this.blog.context);
-    })
+    }
   }
 
-  public blog: Blog = {
-    title: '',
-    tags: '',
-    contextType: 'Ckeditor',
-    context: '',
-  };
+  public blog: Blog;
 
   newMessage() {
     this.data.changeMessage("Hello from Sibling")

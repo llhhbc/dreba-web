@@ -15,7 +15,7 @@ export class BlogComponent implements OnInit {
   blogs: Observable<Blog[]>;
   total: Observable<number>;
 
-  constructor(private service: BlogService) {
+  constructor(public service: BlogService) {
     this.blogs = service.blogs$;
     this.total = service.total$;
   }

@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -34,7 +36,7 @@ import { SortableDirective } from './blog/sortable.directive';
     CKEditorModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/dreba' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
