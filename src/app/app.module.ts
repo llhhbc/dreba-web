@@ -37,6 +37,7 @@ import { SortableDirective } from './blog/sortable.directive';
     NgbModule,
   ],
   providers: [{ provide: APP_BASE_HREF, useValue: '/dreba' }],
+  // providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

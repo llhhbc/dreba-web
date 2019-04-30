@@ -1,5 +1,5 @@
 import { Injectable, PipeTransform } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { DecimalPipe } from '@angular/common';
 
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
@@ -94,9 +94,17 @@ export class BlogService {
     this._search$.next();
   }
 
+  public Next() {
+    this._search$.next();
+  }
+
   public GetBlogs(uuid: string): Observable<SearchResult> {
     console.log("run here for get blogs");
-    return this.http.get<SearchResult>(GlobalConfig.getBlogUrl + "/" + uuid);
+    let params = new HttpParams();
+    params.append("pageSize", this._state.pageSize.toString());
+    params.append("page", this._state.page.toString());
+
+    return this.http.get<SearchResult>(GlobalConfig.getBlogUrl + "/" + uuid, { params: params, });
   }
 
   private _doSearch(blogs: Blog[]): Blog[] {
@@ -112,6 +120,7 @@ export class BlogService {
 
     // 3. paginate
     blogs = blogs.slice((page - 1) * pageSize, (page - 1) * pageSize + pageSize);
+    console.log("after slice:", blogs);
     return blogs;
   }
 }

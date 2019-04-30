@@ -5,9 +5,15 @@
   </h1>
 </div>
 
-<nav>
-  <a routerLink="/">Dashboard</a>
-  <a routerLink="/blogs">Create</a>
-</nav>
+<div class="btn-group btn-group-toggle">
+  <label ngbButtonLabel class="btn-primary">
+    <a routerLink="/" class="btn-primary">Dashboard</a>
+  </label>
+  <label ngbButtonLabel class="btn-primary">
+    <a routerLink="/blogs" class="btn-primary">Create</a>
+  </label>
+</div>
 
-<router-outlet></router-outlet>
+<div>
+  <router-outlet></router-outlet>
+</div>

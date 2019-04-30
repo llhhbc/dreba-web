@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/
 import { Blog } from './blog';
 import { BlogService, SearchResult } from './blog.service';
 import { SortableDirective, SortEvent } from './sortable.directive';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 
 @Component({
@@ -36,9 +36,10 @@ export class BlogComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.data.GetBlogs().subscribe((res: SearchResult) => {
+    this.service.Next();
+    // this.service.GetBlogs('').subscribe((res: SearchResult) => {
     //   console.log(res);
-    //   this.blogs = res.blogs;
+    //   this.blogs = of(res.blogs);
     // });
   }
 
