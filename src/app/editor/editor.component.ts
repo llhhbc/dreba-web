@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -13,6 +13,9 @@ import { Blog } from '../blog/blog';
   styleUrls: ['./editor.component.sass']
 })
 export class EditorComponent implements OnInit {
+
+
+  public readOnly: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -30,6 +33,7 @@ export class EditorComponent implements OnInit {
 
     const uuid = this.route.snapshot.paramMap.get('uuid');
     if (uuid != null) {
+      this.readOnly = true;
       this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
         this.blog = res.blogs.pop();
         this.data.changeMessage(this.blog.context);
@@ -54,6 +58,10 @@ export class EditorComponent implements OnInit {
 
   changeEditor(editor: string) {
     this.blog.contextType = editor;
+  }
+
+  edit() {
+    this.readOnly = false;
   }
 
   goBack(): void {

@@ -13,6 +13,7 @@ import { CkeditorConfig } from '../../../config/ckeditor';
 })
 export class CkeditorComponent implements OnInit {
 
+	@Input() readOnly: boolean;
 	message: string;
 
 	constructor(private data: DataService) { }
@@ -22,7 +23,8 @@ export class CkeditorComponent implements OnInit {
 	public config = CkeditorConfig;
 
 	ngOnInit() {
-		this.data.currentMessage.subscribe(message => this.message = message)
+		this.data.currentMessage.subscribe(message => this.message = message);
+		// console.log("get readonly ", this.readOnly);
 	}
 
 
