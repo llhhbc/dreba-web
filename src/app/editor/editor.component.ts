@@ -33,7 +33,7 @@ export class EditorComponent implements OnInit {
 
     const uuid = this.route.snapshot.paramMap.get('uuid');
     if (uuid != null) {
-      this.readOnly = true;
+      this.readOnly = false;
       this.blogSvr.GetBlogs(uuid).subscribe((res: SearchResult) => {
         this.blog = res.blogs.pop();
         this.data.changeMessage(this.blog.context);

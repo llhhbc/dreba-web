@@ -10,16 +10,16 @@
     <input [(ngModel)]="blog.tags" type="text" name="tags" id="tags">
   </div>
 
-  <button type="button" (click)="changeEditor('Ckeditor')">CkEditor</button>
-  <button type="button" (click)="changeEditor('MarkDown')">MarkDown</button>
+  <!-- <button type="button" (click)="changeEditor('Ckeditor')">CkEditor</button> -->
+  <!-- <button type="button" (click)="changeEditor('MarkDown')">MarkDown</button> -->
 
   <label for="context">context</label>
   <div *ngIf="blog.contextType=='Ckeditor'">
     <app-ckeditor name="context" [readOnly]="readOnly"></app-ckeditor>
   </div>
-  <div *ngIf="blog.contextType=='MarkDown'">
+  <!-- <div *ngIf="blog.contextType=='MarkDown'">
     <app-markdown name="context" [readOnly]="readOnly"></app-markdown>
-  </div>
+  </div> -->
 
   <div *ngIf="readOnly">
     <p><button type="button" (click)="edit()">Edit</button></p>
